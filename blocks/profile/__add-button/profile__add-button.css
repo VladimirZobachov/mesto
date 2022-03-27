@@ -1,5 +1,13 @@
 .profile__add-button{
+    display: grid;
+    grid-area: add;
+    align-self: end;
+    margin-right: 0;
     width: 150px;
     height: 50px;
     border: solid 1px #fff;
+    background-image: url("../../../images/add.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: black;
 }

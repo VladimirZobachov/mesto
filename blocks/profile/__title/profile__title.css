@@ -1,5 +1,12 @@
 .profile__title{
-    font-family: Inter Arial sans-serif;
+    display: grid;
+    align-self: end;
+    min-width: 294px;
+    grid-area: text;
+    font-family: "Inter", "Arial ", sans-serif;
     font-size: 42px;
+    font-weight: 500;
     line-height: 48px;
+    color: #ffffff;
+    margin: 0;
 }

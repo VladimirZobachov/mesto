@@ -1,3 +1,10 @@
 .profile{
+    display: grid;
+    margin: 40px 0 51px 0;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 60px);
+    grid-template-areas:
+        "avatar text edit add"
+        "avatar subtitle . .";
     width: 100%;
 }

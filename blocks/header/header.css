@@ -2,4 +2,7 @@
     width: 100%;
     max-width: 880px;
     margin: auto;
+    min-height: 119px;
+    border-bottom: solid 1px #545454;
+    opacity: 0.7;
 }

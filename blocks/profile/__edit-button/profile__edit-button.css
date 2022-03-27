@@ -1,5 +1,11 @@
 .profile__edit-button{
+    display: grid;
+    align-self: end;
+    grid-area: edit;
     width: 24px;
     height: 24px;
     border: solid 1px #fff;
+    background-image: url("../../../images/icon.png");
+    background-position: center;
+    background-repeat: no-repeat;
 }
