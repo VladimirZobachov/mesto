@@ -1,4 +1,11 @@
 .gallery__like{
+    display: flex;
+    align-self: center;
     width: 22px;
     height: 19px;
+    cursor: pointer;
+    background-image: url("../../../images/like.svg");
+}
+.gallery__like:hover{
+    opacity: 0.5;
 }

@@ -1,9 +1,12 @@
 .gallery__item-title{
-    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 17px 15px 0 15px;
     margin: 0;
     font-family: "Inter", "Arial ", sans-serif;
     font-size: 24px;
     font-weight: 900;
     line-height: 29px;
-    color: white;
+    color: #000000;
+
 }
