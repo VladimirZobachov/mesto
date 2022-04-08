@@ -1,9 +1,9 @@
 .profile__add-button{
     display: flex;
-    width: 150px;
+    min-width: 150px;
     height: 50px;
     border: solid 1px #fff;
-    background-image: url("../../../images/add.png");
+    background-image: url("../../../images/add_icon.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-color: black;
