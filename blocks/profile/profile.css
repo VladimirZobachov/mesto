@@ -10,7 +10,7 @@
 @media all and (max-width: 521px) {
     .profile{
         flex-direction: column;
-        margin: 40px auto 51px auto;
+        margin: 40px auto 33px auto;
         width: fit-content;
     }
 }

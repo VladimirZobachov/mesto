@@ -8,5 +8,9 @@
     font-weight: 900;
     line-height: 29px;
     color: #000000;
-
+}
+@media all and (max-width: 521px) {
+    .gallery__item-title{
+        padding: 20px 20px 0 20px;
+    }
 }
