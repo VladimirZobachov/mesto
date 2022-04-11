@@ -7,7 +7,7 @@
     width: 100%;
 }
 
-@media all and (max-width: 629px) {
+@media all and (max-width: 640px) {
     .profile{
         flex-direction: column;
         margin-left: auto;
