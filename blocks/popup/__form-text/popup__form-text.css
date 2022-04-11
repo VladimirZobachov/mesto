@@ -10,3 +10,8 @@
     line-height: 17px;
     outline: none;
 }
+@media all and (max-width: 521px){
+    .popup__form-text{
+        padding-top: 30px;
+    }
+}

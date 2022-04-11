@@ -4,9 +4,9 @@
     width: 100%;
     padding-left: 16px;
 }
-@media all and (max-width: 521px){
+@media all and (max-width: 629px){
     .profile__content{
         align-items: center;
-        padding-left: 0px;
+        padding-left: 0;
     }
 }

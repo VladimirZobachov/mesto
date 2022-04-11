@@ -1,7 +1,7 @@
 .profile__name{
     display: flex;
 }
-@media all and (max-width:521px){
+@media all and (max-width:629px){
     .profile__name{
         padding-left: 30px;
     }

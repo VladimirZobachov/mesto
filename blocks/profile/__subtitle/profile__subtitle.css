@@ -10,7 +10,7 @@
     white-space: nowrap;
     overflow: hidden;
 }
-@media all and (max-width: 521px){
+@media all and (max-width: 629px){
     .profile__subtitle{
         font-size: 14px;
         font-weight: 400;
