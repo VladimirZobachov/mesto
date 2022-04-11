@@ -3,31 +3,26 @@ const popup = document.querySelector('.popup');
 const closeButton = document.querySelector('.popup__close-button');
 const name = document.querySelector('.profile__title');
 const major = document.querySelector('.profile__subtitle');
-const inputName = document.querySelector('#name');
-const inputMajor = document.querySelector('#major');
-const saveButton = document.querySelector('.popup__button');
-const like = document.querySelector('.gallery__like');
-
-inputName.value = name.textContent;
-inputMajor.value = major.textContent;
+const inputName = document.querySelector('.popup__form-text_name');
+const inputMajor = document.querySelector('.popup__form-text_major');
+const submitForm = document.querySelector('.popup__form');
 
 function ShowModalWindow(){
-    popup.classList.add('popup__is-active');
+    inputName.value = name.textContent;
+    inputMajor.value = major.textContent;
+    popup.classList.add('popup__opened');
 }
 function CloseModalWindow(){
-    popup.classList.remove('popup__is-active');
+    popup.classList.remove('popup__opened');
 }
 function Save(){
     name.textContent = inputName.value;
     major.textContent = inputMajor.value;
     CloseModalWindow();
-    console.log(editButton);
 }
-function Like(){
-    like.src = './images/active_like.png';
-}
+
 editButton.addEventListener('click', ShowModalWindow);
 closeButton.addEventListener('click', CloseModalWindow);
-saveButton.addEventListener('click', Save);
+submitForm.addEventListener('click', Save);
 like.addEventListener('click', Like);
 

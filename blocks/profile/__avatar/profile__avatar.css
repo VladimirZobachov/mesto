@@ -2,5 +2,5 @@
     display: grid;
     grid-area: avatar;
     width: 120px;
-    border-radius: 60px;
+    border-radius: 50%;
 }
