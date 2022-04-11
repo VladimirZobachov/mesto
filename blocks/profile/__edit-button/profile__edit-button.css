@@ -6,6 +6,7 @@
     background-image: url("../../../images/edit_icon.svg");
     background-position: center;
     background-repeat: no-repeat;
+    background-color: currentColor;
     cursor: pointer;
     margin-left: 18px;
 }

@@ -15,7 +15,8 @@ function ShowModalWindow(){
 function CloseModalWindow(){
     popup.classList.remove('popup__opened');
 }
-function Save(){
+function Save(evt){
+    evt.preventDefault();
     name.textContent = inputName.value;
     major.textContent = inputMajor.value;
     CloseModalWindow();
@@ -23,6 +24,5 @@ function Save(){
 
 editButton.addEventListener('click', ShowModalWindow);
 closeButton.addEventListener('click', CloseModalWindow);
-submitForm.addEventListener('click', Save);
-like.addEventListener('click', Like);
+submitForm.addEventListener('submit', Save);
 
