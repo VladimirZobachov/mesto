@@ -2,13 +2,10 @@ const editButton = document.querySelector('.profile__edit-button');
 const addButton = document.querySelector('.profile__add-button');
 const popup = document.querySelector('.popup');
 const closeButton = document.querySelector('.popup__close-button');
-const name = document.querySelector('.profile__title');
-const major = document.querySelector('.profile__subtitle');
-const inputName = document.querySelector('.popup__form-text_type_name');
-const inputMajor = document.querySelector('.popup__form-text_type_major');
-const submitForm = document.querySelector('.popup__form');
 const Gallery = document.querySelector(".gallery__list");
-const template = document.querySelector(".template");
+const templateCard = document.querySelector(".template__card");
+const templatePopup = document.querySelector(".template__popup");
+const submitForm = document.querySelector('.popup__form');
 const initialCards = [
     {
         name: 'Архыз',
@@ -36,27 +33,50 @@ const initialCards = [
     }
 ];
 
-function ShowModalWindow(){
+function ShowPopupEditPorfile(){
+    
+    const name = document.querySelector('.profile__title');
+    const major = document.querySelector('.profile__subtitle');
+    const inputName = document.querySelector('.popup__form-text_type_name');
+    const inputMajor = document.querySelector('.popup__form-text_type_major');
+
     inputName.value = name.textContent;
     inputMajor.value = major.textContent;
     popup.classList.add('popup_opened');
+
 }
+
+function ShowPopupAddCard() {
+
+    const getElementTemplate = templatePopup.content.cloneNode(true);
+    const title = getElementTemplate.querySelector(".gallery__item-title");
+    const img = getElementTemplate.querySelector(".gallery__img");
+
+    title.textContent = item.name;
+    img.src = item.link;
+
+    return getElementTemplate;
+
+}
+
 function CloseModalWindow(){
     popup.classList.remove('popup_opened');
 }
+
 function Save(evt){
     evt.preventDefault();
     name.textContent = inputName.value;
     major.textContent = inputMajor.value;
     CloseModalWindow();
 }
+
 function render(){
     const html = initialCards.map(getElement);
     Gallery.append(...html);
 }
 
 function getElement(item){
-    const getElementTemplate = template.content.cloneNode(true);
+    const getElementTemplate = templateCard.content.cloneNode(true);
     const title = getElementTemplate.querySelector(".gallery__item-title");
     const img = getElementTemplate.querySelector(".gallery__img");
     title.textContent = item.name;
@@ -64,8 +84,8 @@ function getElement(item){
     return getElementTemplate;
 }
 
-editButton.addEventListener('click', ShowModalWindow);
-addButton.addEventListener('click', ShowModalWindow);
+editButton.addEventListener('click', ShowPopupEditPorfile);
+addButton.addEventListener('click', ShowPopupAddCard);
 closeButton.addEventListener('click', CloseModalWindow);
 submitForm.addEventListener('submit', Save);
 

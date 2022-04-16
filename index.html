@@ -43,7 +43,7 @@
             </form>
         </div>
     </div>
-    <template class="template">
+    <template class="template__card">
         <li class="gallery__item">
             <img src="" class="gallery__img" alt="">
             <div class="gallery__item-info">
@@ -51,6 +51,15 @@
                 <button aria-label="Like" type="button" class="gallery__like"></button>
             </div>
         </li>
+    </template>
+    <template class="template__popup__card">
+        <button aria-label="Close" type="button" class="popup__close-button"></button>
+        <h2 class="popup__header">Новое место</h2>
+        <form class="popup__form" name="popup-form">
+            <input type="text" class="popup__form-text popup__form-text_type_name" placeholder="Название" name="name">
+            <input type="text" class="popup__form-text popup__form-text_type_major" placeholder="Ссылка на картинку" name="major">
+            <button aria-label="Save" type="submit" class="popup__button">Сохранить</button>
+        </form>
     </template>
     <script src="./scripts/index.js"></script>
 </body>
