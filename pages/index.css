@@ -22,6 +22,7 @@
 @import url("../blocks/gallery/__like/gallery__like.css");
 @import url("../blocks/gallery/__like/_type/gallry__like_type_is-active.css");
 @import url("../blocks/gallery/__item-info/gallery__item-info.css");
+@import url("../blocks/gallery/__item/__delete/gallery__item__delete.css");
 @import url("../blocks/footer/footer.css");
 @import url("../blocks/footer/__copyright/footer__copyright.css");
 @import url("../blocks/popup/popup.css");
