@@ -8,8 +8,6 @@ const Gallery = document.querySelector(".gallery__list");
 const templateCard = document.querySelector(".template__card");
 const templatePopupProfile = document.querySelector(".template__popup__profile");
 const templatePopupCard = document.querySelector(".template__popup__card");
-
-const submitFormCard = document.querySelector('.popup__form__card');
 const initialCards = [
     {
         name: 'Архыз',
@@ -46,7 +44,6 @@ function ShowPopupEditPorfile(){
     const inputMajor = getElementTemplate.querySelector('.popup__form-text_type_major');
     const closeButton = getElementTemplate.querySelector('.popup__close-button');
 
-
     inputName.value = name.textContent;
     inputMajor.value = major.textContent;
     popupContent.append(getElementTemplate);
@@ -73,6 +70,7 @@ function CloseModalWindow(){
 function Save(evt){
     evt.preventDefault();
     const submitForm = document.querySelector('.popup__form__profile');
+
     if(submitForm != null){
         const inputName = popupContent.querySelector('.popup__form-text_type_name');
         const inputMajor = popupContent.querySelector('.popup__form-text_type_major');
@@ -103,8 +101,18 @@ function getElement(item){
     return getElementTemplate;
 }
 
+function Like(evt){
+    const like = evt.target;
+    if(like.className === "gallery__like"){
+        like.classList.add('gallery__like_type_is-active');
+    }else{
+        like.classList.remove('gallery__like_type_is-active');
+    }
+}
+
 editButton.addEventListener('click', ShowPopupEditPorfile);
 addButton.addEventListener('click', ShowPopupAddCard);
 popupContent.addEventListener('submit', Save);
+Gallery.addEventListener('click', Like);
 
 render();
