@@ -3,11 +3,12 @@ const major = document.querySelector('.profile__subtitle');
 const editButton = document.querySelector('.profile__edit-button');
 const addButton = document.querySelector('.profile__add-button');
 const popup = document.querySelector('.popup');
-const popupContent = popup.querySelector(".popup__content");
+const popupContent = document.querySelector('.popup__content');
 const Gallery = document.querySelector(".gallery__list");
 const templateCard = document.querySelector(".template__card");
 const templatePopupProfile = document.querySelector(".template__popup__profile");
 const templatePopupCard = document.querySelector(".template__popup__card");
+const templatePopupCardImg = document.querySelector(".template__popup__card-img");
 const initialCards = [
     {
         name: 'Архыз',
@@ -46,7 +47,7 @@ function ShowPopupEditPorfile(){
 
     inputName.value = name.textContent;
     inputMajor.value = major.textContent;
-    popupContent.append(getElementTemplate);
+    popup.append(getElementTemplate);
     popup.classList.add('popup_opened');
     closeButton.addEventListener('click', CloseModalWindow);
 }
@@ -56,15 +57,20 @@ function ShowPopupAddCard() {
     const getElementTemplate = templatePopupCard.content.cloneNode(true);
     const closeButton = getElementTemplate.querySelector('.popup__close-button');
 
-    popupContent.append(getElementTemplate);
+    popup.append(getElementTemplate);
     popup.classList.add('popup_opened');
     closeButton.addEventListener('click', CloseModalWindow);
 
 }
 
 function CloseModalWindow(){
-    popupContent.innerHTML = '';
+    popup.innerHTML = '';
     popup.classList.remove('popup_opened');
+}
+
+function ClosePopupImg(){
+    popup.innerHTML = '';
+    popup.classList.remove('popup_opened_img');
 }
 
 function Save(evt){
@@ -101,18 +107,43 @@ function getElement(item){
     return getElementTemplate;
 }
 
-function Like(evt){
-    const like = evt.target;
-    if(like.className === "gallery__like"){
-        like.classList.add('gallery__like_type_is-active');
-    }else{
-        like.classList.remove('gallery__like_type_is-active');
+function clickOnElement(evt){
+    const element = evt.target;
+    if(element.className === "gallery__like"){
+        element.classList.add('gallery__like_type_is-active');
+    }
+    else if(element.className === "gallery__like gallery__like_type_is-active"){
+        element.classList.remove('gallery__like_type_is-active');
+    }
+    else if(element.className === "gallery__del-button")
+    {
+        element.parentNode.remove();
+    }
+    else if(element.className === "gallery__img")
+    {
+        ShowPopupImg(element);
+        console.log(element);
     }
 }
 
+function ShowPopupImg(element){
+    const getElementTemplate = templatePopupCardImg.content.cloneNode(true);
+    const popupCardImg = getElementTemplate.querySelector('.gallery__popup__card-img');
+    const closeButton = getElementTemplate.querySelector('.popup__close-button');
+    const titleImg = getElementTemplate.querySelector('.popup__title-img');
+
+    popup.append(getElementTemplate);
+    popup.classList.add('popup_opened_img');
+    popupCardImg.setAttribute('src', element.getAttribute('src'));
+    closeButton.addEventListener('click', ClosePopupImg);
+    titleImg.textContent = element.parentNode.childNodes[5].textContent;
+
+}
+
+
 editButton.addEventListener('click', ShowPopupEditPorfile);
 addButton.addEventListener('click', ShowPopupAddCard);
-popupContent.addEventListener('submit', Save);
-Gallery.addEventListener('click', Like);
+popup.addEventListener('submit', Save);
+Gallery.addEventListener('click', clickOnElement);
 
 render();
