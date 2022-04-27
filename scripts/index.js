@@ -7,8 +7,8 @@ const popupEdit = document.querySelector('.popup_type_edit');
 const popupImage = document.querySelector('.popup_type_image');
 const gallery = document.querySelector(".gallery__list");
 const templateCard = document.querySelector(".template__card");
-const submitFormProfile = document.querySelector('.popup__form__profile');
-const submitFormCard = document.querySelector('.popup__form__card');
+const submitFormProfile = document.querySelector('.popup__form-profile');
+const submitFormCard = document.querySelector('.popup__form-card');
 const inputName = document.querySelector('.popup__form-text_type_name');
 const inputMajor = document.querySelector('.popup__form-text_type_major');
 const inputTitle = document.querySelector('.popup__form-text_type_title');
@@ -107,7 +107,7 @@ function clicker(evt){
             showPopup(popupNewCard);
             break;
         case "gallery__img":
-            const img = popupImage.querySelector('.gallery__popup__card-img');
+            const img = popupImage.querySelector('.popup__gallery-img');
             const imgTitle = popupImage.querySelector('.popup__title-img');
             img.src = element.src;
             imgTitle.textContent = element.nextSibling.nextSibling.firstChild.nextSibling.textContent;
