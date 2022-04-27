@@ -1,14 +1,18 @@
 const title = document.querySelector('.profile__title');
 const major = document.querySelector('.profile__subtitle');
-const editButton = document.querySelector('.profile__edit-button');
-const addButton = document.querySelector('.profile__add-button');
-const popup = document.querySelector('.popup');
-const popupContent = document.querySelector('.popup__content');
-const Gallery = document.querySelector(".gallery__list");
+const profileEditButton = document.querySelector('.profile__edit-button');
+const profileAddButton = document.querySelector('.profile__add-button');
+const popupNewCard = document.querySelector('.popup_type_new-card');
+const popupEdit = document.querySelector('.popup_type_edit');
+const popupImage = document.querySelector('.popup_type_image');
+const gallery = document.querySelector(".gallery__list");
 const templateCard = document.querySelector(".template__card");
-const templatePopupProfile = document.querySelector(".template__popup__profile");
-const templatePopupCard = document.querySelector(".template__popup__card");
-const templatePopupCardImg = document.querySelector(".template__popup__card-img");
+const submitFormProfile = document.querySelector('.popup__form__profile');
+const submitFormCard = document.querySelector('.popup__form__card');
+const inputName = document.querySelector('.popup__form-text_type_name');
+const inputMajor = document.querySelector('.popup__form-text_type_major');
+const inputTitle = document.querySelector('.popup__form-text_type_title');
+const inputImg = document.querySelector('.popup__form-text_type_img');
 const initialCards = [
     {
         name: 'Архыз',
@@ -36,114 +40,90 @@ const initialCards = [
     }
 ];
 
-function ShowPopupEditPorfile(){
-
-    const getElementTemplate = templatePopupProfile.content.cloneNode(true);
-    const name = document.querySelector('.profile__title');
-    const major = document.querySelector('.profile__subtitle');
-    const inputName = getElementTemplate.querySelector('.popup__form-text_type_name');
-    const inputMajor = getElementTemplate.querySelector('.popup__form-text_type_major');
-    const closeButton = getElementTemplate.querySelector('.popup__close-button');
-
-    inputName.value = name.textContent;
-    inputMajor.value = major.textContent;
-    popup.append(getElementTemplate);
-    popup.classList.add('popup_opened');
-    closeButton.addEventListener('click', CloseModalWindow);
+function showPopup(popupWindow) {
+    const closeButton = popupWindow.querySelector('.popup__close-button');
+    popupWindow.classList.add('popup_opened');
+    closeButton.addEventListener('click',clicker);
+}
+function closePopup(popupWindow) {
+    popupWindow.classList.remove('popup_opened');
 }
 
-function ShowPopupAddCard() {
-
-    const getElementTemplate = templatePopupCard.content.cloneNode(true);
-    const closeButton = getElementTemplate.querySelector('.popup__close-button');
-
-    popup.append(getElementTemplate);
-    popup.classList.add('popup_opened');
-    closeButton.addEventListener('click', CloseModalWindow);
-
-}
-
-function CloseModalWindow(){
-    popup.innerHTML = '';
-    popup.classList.remove('popup_opened');
-}
-
-function ClosePopupImg(){
-    popup.innerHTML = '';
-    popup.classList.remove('popup_opened_img');
-}
-
-function Save(evt){
+function saveFormProfile(evt){
     evt.preventDefault();
-    const submitForm = document.querySelector('.popup__form__profile');
+    title.textContent = inputName.value;
+    major.textContent = inputMajor.value;
+    closePopup(submitFormProfile.parentNode.parentNode);
+}
 
-    if(submitForm != null){
-        const inputName = popupContent.querySelector('.popup__form-text_type_name');
-        const inputMajor = popupContent.querySelector('.popup__form-text_type_major');
-        title.textContent = inputName.value;
-        major.textContent = inputMajor.value;
-    }else{
-        const inputTitle = popupContent.querySelector('.popup__form-text_type_title');
-        const inputImg = popupContent.querySelector('.popup__form-text_type_img');
-        initialCards.unshift({name: inputTitle.value, link: inputImg.value});
-        Gallery.innerHTML = '';
-        render();
-    }
-
-    CloseModalWindow();
+function saveFormCard(evt){
+    evt.preventDefault();
+    const getElementTemplate = templateCard.content.cloneNode(true);
+    const titleEl = getElementTemplate.querySelector(".gallery__item-title");
+    const imgEl = getElementTemplate.querySelector(".gallery__img");
+    titleEl.textContent = inputTitle.value;
+    imgEl.src = inputImg.value;
+    imgEl.alt = inputTitle.value;
+    gallery.prepend(getElementTemplate);
+    closePopup(submitFormCard.parentNode.parentNode);
 }
 
 function render(){
     const html = initialCards.map(getElement);
-    Gallery.append(...html);
+    gallery.append(...html);
 }
 
 function getElement(item){
     const getElementTemplate = templateCard.content.cloneNode(true);
-    const title = getElementTemplate.querySelector(".gallery__item-title");
-    const img = getElementTemplate.querySelector(".gallery__img");
-    title.textContent = item.name;
-    img.src = item.link;
+    const titleEl = getElementTemplate.querySelector(".gallery__item-title");
+    const imgEl = getElementTemplate.querySelector(".gallery__img");
+    titleEl.textContent = item.name;
+    imgEl.src = item.link;
+    imgEl.alt = titleEl.textContent;
     return getElementTemplate;
 }
 
-function clickOnElement(evt){
+function clicker(evt){
     const element = evt.target;
-    if(element.className === "gallery__like"){
-        element.classList.add('gallery__like_type_is-active');
-    }
-    else if(element.className === "gallery__like gallery__like_type_is-active"){
-        element.classList.remove('gallery__like_type_is-active');
-    }
-    else if(element.className === "gallery__del-button")
+    switch(element.className)
     {
-        element.parentNode.remove();
-    }
-    else if(element.className === "gallery__img")
-    {
-        ShowPopupImg(element);
-        console.log(element);
+        case "gallery__like":
+            element.classList.add('gallery__like_type_is-active');
+            break;
+        case "gallery__like gallery__like_type_is-active":
+            element.classList.remove('gallery__like_type_is-active');
+            break;
+        case "gallery__del-button":
+            element.parentNode.remove();
+            break;
+        case "profile__edit-button":
+            const popupTitle = popupEdit.querySelector('.popup__form-text_type_name');
+            const popupMajor = popupEdit.querySelector('.popup__form-text_type_major');
+            popupTitle.value = title.textContent;
+            popupMajor.value = major.textContent;
+            showPopup(popupEdit);
+            break
+        case "profile__add-button":
+            showPopup(popupNewCard);
+            break;
+        case "gallery__img":
+            const img = popupImage.querySelector('.gallery__popup__card-img');
+            const imgTitle = popupImage.querySelector('.popup__title-img');
+            img.src = element.src;
+            imgTitle.textContent = element.nextSibling.nextSibling.firstChild.nextSibling.textContent;
+            img.alt = imgTitle.textContent;
+            showPopup(popupImage);
+            break;
+        case "popup__close-button":
+            closePopup(element.parentNode.parentNode);
+            break;
     }
 }
 
-function ShowPopupImg(element){
-    const getElementTemplate = templatePopupCardImg.content.cloneNode(true);
-    const popupCardImg = getElementTemplate.querySelector('.gallery__popup__card-img');
-    const closeButton = getElementTemplate.querySelector('.popup__close-button');
-    const titleImg = getElementTemplate.querySelector('.popup__title-img');
-
-    popup.append(getElementTemplate);
-    popup.classList.add('popup_opened_img');
-    popupCardImg.setAttribute('src', element.getAttribute('src'));
-    closeButton.addEventListener('click', ClosePopupImg);
-    titleImg.textContent = element.parentNode.childNodes[5].textContent;
-
-}
-
-
-editButton.addEventListener('click', ShowPopupEditPorfile);
-addButton.addEventListener('click', ShowPopupAddCard);
-popup.addEventListener('submit', Save);
-Gallery.addEventListener('click', clickOnElement);
+profileEditButton.addEventListener('click', clicker);
+profileAddButton.addEventListener('click', clicker);
+submitFormProfile.addEventListener('submit', saveFormProfile);
+submitFormCard.addEventListener('submit', saveFormCard);
+gallery.addEventListener('click', clicker);
 
 render();
