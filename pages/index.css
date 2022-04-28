@@ -27,6 +27,7 @@
 @import url("../blocks/footer/footer.css");
 @import url("../blocks/footer/__copyright/footer__copyright.css");
 @import url("../blocks/popup/popup.css");
+@import url("../blocks/popup/__gallery-img/popup__gallery-img.css");
 @import url("../blocks/popup/__content-profile/popup__content-profile.css");
 @import url("../blocks/popup/__content-img/popup__content-img.css");
 @import url("../blocks/popup/__content-card/popup__content-card.css");

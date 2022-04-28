@@ -1,3 +1,9 @@
 .popup__gallery-img{
     max-height: 700px;
 }
+@media all and (max-width: 720px){
+    .popup__gallery-img{
+        max-height: 70vh;
+        max-width: 90%;
+    }
+}

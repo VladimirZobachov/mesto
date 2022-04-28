@@ -1,3 +1,9 @@
 .popup__content-img{
     position: relative;
 }
+@media all and (max-width: 720px){
+    .popup__content-img{
+        max-width: 90%;
+        margin: auto;
+    }
+}
