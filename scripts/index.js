@@ -48,7 +48,6 @@ const initialCards = [
 ];
 
 const handleEscUp = (evt) => {
-    evt.preventDefault();
     const activePopup = document.querySelector('.popup_opened');
     if (evt.which === 27) {
         closePopup(activePopup);
