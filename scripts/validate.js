@@ -17,6 +17,7 @@ const checkInputValidity = (formElement, inputElement, {errorClass, inputErrorCl
         inputElement.classList.add('popup__input-error');
         showInputError(formElement, inputElement, inputElement.validationMessage, {errorClass, inputErrorClass,rest});
     } else {
+        inputElement.classList.remove('popup__input-error');
         hideInputError(formElement, inputElement, {errorClass, inputErrorClass,rest});
     }
 };
