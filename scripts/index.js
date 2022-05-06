@@ -47,11 +47,26 @@ const initialCards = [
     }
 ];
 
+const handleEscUp = (evt) => {
+    evt.preventDefault();
+    const activePopup = document.querySelector('.popup_opened');
+    if (evt.which === 27) {
+        closePopup(activePopup);
+    };
+};
+
 function showPopup(popupWindow) {
     popupWindow.classList.add('popup_opened');
+    document.addEventListener("keydown", handleEscUp);
+    popupWindow.addEventListener('click', (evt) => {
+        if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')) {
+            closePopup(popupWindow);
+        }
+    });
 }
 
 function closePopup(popupWindow) {
+    document.removeEventListener('keydown', handleEscUp);
     popupWindow.classList.remove('popup_opened');
 }
 
