@@ -1,5 +1,5 @@
 .popup__gallery-img{
-    max-height: 700px;
+    max-height: 50vh;
 }
 @media all and (max-width: 720px){
     .popup__gallery-img{
