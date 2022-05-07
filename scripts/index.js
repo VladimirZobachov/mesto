@@ -32,7 +32,7 @@ const closePopupOverlay = (evt) => {
     if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')) {
         const activePopup = document.querySelector('.popup_opened');
         closePopup(activePopup);
-        activePopup.removeEventListener('click', closePopupOverlay);
+
     }
 }
 
@@ -45,6 +45,7 @@ function showPopup(popupWindow) {
 function closePopup(popupWindow) {
     document.removeEventListener('keydown', handleEscUp);
     popupWindow.classList.remove('popup_opened');
+    popupWindow.removeEventListener('click', closePopupOverlay);
 }
 
 function saveFormProfile(evt){
