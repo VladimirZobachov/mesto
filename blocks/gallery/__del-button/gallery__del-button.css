@@ -8,3 +8,6 @@
     cursor: pointer;
     border: 0;
 }
+.gallery__del-button:hover{
+    opacity: 0.8;
+}

@@ -38,7 +38,7 @@
             <form class="popup__form popup__form-profile" name="popup-form">
                 <input type="text" class="popup__input popup__input_type_name" placeholder="Имя" name="name" id="name" required minlength="2" maxlength="40">
                 <span class="popup__error-message popup__error-message_name"></span>
-                <input type="text" class="popup__input popup__input_type_major" placeholder="Призвание" name="major" id="major" required minlength="2" maxlength="40">
+                <input type="text" class="popup__input popup__input_type_major" placeholder="Призвание" name="major" id="major" required minlength="2" maxlength="200">
                 <span class="popup__error-message popup__error-message_major"></span>
                 <button aria-label="saveForm" type="submit" class="popup__button">Сохранить</button>
             </form>
@@ -74,6 +74,7 @@
             </div>
         </li>
     </template>
+    <script src="./scripts/cards.js"></script>
     <script src="./scripts/index.js"></script>
     <script src="./scripts/validate.js"></script>
 </body>
