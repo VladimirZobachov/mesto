@@ -1,32 +1,5 @@
-const initialCards = [
-    {
-
-        name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-        name: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-        name: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-        name: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-        name: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-        name: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-];
-
-const gallery = document.querySelector(".gallery__list");
+import {initialCards,gallery, popupImage} from "./constants.js";
+import {handleEscUp,closePopupOverlay,showPopup,closePopup} from "./utils.js";
 
 class Card{
 
@@ -51,20 +24,19 @@ class Card{
 
     _handleOpenPopup(){
 
-        const popupWindow = document.querySelector('.popup_type_image');
-        const popupImg = popupWindow.querySelector('.popup__gallery-img');
-        const popupTitle = popupWindow.querySelector('.popup__title-img');
-        const closeButton = popupWindow.querySelector('.popup__close-button_type_img');
+        const popupImg = popupImage.querySelector('.popup__gallery-img');
+        const popupTitle = popupImage.querySelector('.popup__title-img');
+        const closeButton = popupImage.querySelector('.popup__close-button_type_img');
 
         popupImg.src = this._image;
         popupImg.alt = this._title;
         popupTitle.textContent = this._title;
 
-        popupWindow.classList.add('popup_opened');
+        showPopup(popupImg);
         closeButton.addEventListener('click', ()=>{this._handleClosePopup();})
 
-        //document.addEventListener("keydown", handleEscUp);
-        // popupWindow.addEventListener('click', closePopupOverlay);
+        document.addEventListener("keydown", handleEscUp);
+        popupImg.addEventListener('click', closePopupOverlay);
     }
 
     _handleClosePopup(){
