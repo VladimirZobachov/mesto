@@ -1,5 +1,5 @@
 import * as data from "./constants.js";
-import {Ard} from "./Сard.js";
+import {Card} from "./Сard.js";
 
 export const handleEscUp = (evt) => {
     if (evt.which === 27) {
@@ -39,9 +39,8 @@ export function saveFormCard(evt){
     evt.preventDefault();
     const inputList = Array.from(data.submitFormCard.querySelectorAll('.popup__input'));
     const inactiveButtonClass = 'popup__button_disabled';
-    const card = new Ard({name:data.inputTitle.value, link:data.inputImg.value}, '.template__card');
+    const card = new Card({name:data.inputTitle.value, link:data.inputImg.value}, '.template__card');
     data.gallery.prepend(card.cardGenerate());
     data.submitFormCard.reset();
-    toggleButtonState(inputList, data.submitFormCard.querySelector('.popup__button'),{inactiveButtonClass});
     closePopup(data.submitFormCard.parentNode.parentNode);
 }

@@ -1,7 +1,7 @@
 import {popupImage} from "./constants.js";
 import {showPopup} from "./utils.js";
 
-export class Ard {
+export class Card {
 
     constructor(data, cardSelector){
         this._title = data.name;

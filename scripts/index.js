@@ -1,6 +1,7 @@
 import * as data from "./constants.js";
-import {Ard} from "./Сard.js";
+import {Card} from "./Сard.js";
 import * as utils from "./utils.js";
+import {FormValidator} from "./FormValidator.js";
 
 data.profileEditButton.addEventListener('click', function (){
     data.popupTitle.value = data.title.textContent;
@@ -31,10 +32,26 @@ data.buttonCloseImg.addEventListener('click', function (){
 const renderElements = () => {
     data.gallery.innerHTML = '';
     data.initialCards.forEach((item) => {
-        const card = new Ard(item, '.template__card');
+        const card = new Card(item, '.template__card');
         const cardElement = card.cardGenerate();
         data.gallery.append(cardElement);
     });
 };
 
 renderElements();
+
+const rest = {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__button',
+    inactiveButtonClass: 'popup__button_disabled',
+    inputErrorClass: 'popup__input-error',
+    errorMessageClass: 'popup__error-message',
+    errorClass: 'popup__error_visible'
+};
+
+const formProfileValidator = new FormValidator(rest, data.submitFormProfile);
+formProfileValidator.enableValidation();
+
+const formCardValidator = new FormValidator(rest, data.submitFormCard);
+formCardValidator.enableValidation();
