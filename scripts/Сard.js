@@ -1,7 +1,7 @@
-import {initialCards,gallery, popupImage} from "./constants.js";
-import {handleEscUp,closePopupOverlay,showPopup,closePopup} from "./utils.js";
+import {popupImage} from "./constants.js";
+import {showPopup} from "./utils.js";
 
-class Card{
+export class Ard {
 
     constructor(data, cardSelector){
         this._title = data.name;
@@ -22,28 +22,15 @@ class Card{
         return getElementTemplate;
     }
 
-    _handleOpenPopup(){
-
+    _handlePreviewPicture(){
         const popupImg = popupImage.querySelector('.popup__gallery-img');
         const popupTitle = popupImage.querySelector('.popup__title-img');
-        const closeButton = popupImage.querySelector('.popup__close-button_type_img');
 
         popupImg.src = this._image;
         popupImg.alt = this._title;
         popupTitle.textContent = this._title;
 
-        showPopup(popupImg);
-        closeButton.addEventListener('click', ()=>{this._handleClosePopup();})
-
-        document.addEventListener("keydown", handleEscUp);
-        popupImg.addEventListener('click', closePopupOverlay);
-    }
-
-    _handleClosePopup(){
-        const popupWindow = document.querySelector('.popup_type_image');
-        popupWindow.classList.remove('popup_opened');
-        //document.removeEventListener('keydown', handleEscUp);
-        //popupWindow.removeEventListener('click', closePopupOverlay);
+        showPopup(popupImage);
     }
 
     _setEventListeners(){
@@ -52,7 +39,7 @@ class Card{
         const delButton = this._element.querySelector('.gallery__del-button');
 
         img.addEventListener('click', ()=>{
-            this._handleOpenPopup();
+            this._handlePreviewPicture();
         });
         delButton.addEventListener('click', ()=>{
             delButton.closest('.gallery__item').remove();
@@ -70,13 +57,4 @@ class Card{
 
 }
 
-const renderElements = () => {
-    gallery.innerHTML = '';
-    initialCards.forEach((item) => {
-        const card = new Card(item, '.template__card');
-        const cardElement = card.cardGenerate();
-        gallery.append(cardElement);
-    });
-};
 
-renderElements();
