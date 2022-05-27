@@ -1,50 +1,57 @@
-function getElement(item){
-    const getElementTemplate = templateCard.content.cloneNode(true);
-    const titleEl = getElementTemplate.querySelector(".gallery__item-title");
-    const imgEl = getElementTemplate.querySelector(".gallery__img");
-    const likeEl = getElementTemplate.querySelector(".gallery__like");
-    const delEl = getElementTemplate.querySelector(".gallery__del-button");
-    titleEl.textContent = item.name;
-    imgEl.src = item.link;
-    imgEl.alt = titleEl.textContent;
+import * as data from "./constants.js";
+import {Card} from "./Сard.js";
+import * as utils from "./utils.js";
+import {FormValidator} from "./FormValidator.js";
 
-    imgEl.addEventListener('click',function (){
-        img.src = item.link;
-        imgTitle.textContent = item.name;
-        img.alt = imgTitle.textContent;
-        showPopup(popupImage);
-    })
-    likeEl.addEventListener('click', function (){
-        likeEl.classList.toggle('gallery__like_type_is-active');
-    })
-    delEl.addEventListener('click', function (){
-        delEl.closest('.gallery__item').remove();
-    })
-    return getElementTemplate;
-}
-
-profileEditButton.addEventListener('click', function (){
-    popupTitle.value = title.textContent;
-    popupMajor.value = major.textContent;
-    showPopup(popupEdit);
+data.profileEditButton.addEventListener('click', function (){
+    data.popupTitle.value = data.title.textContent;
+    data.popupMajor.value = data.major.textContent;
+    utils.showPopup(data.popupEdit);
 });
 
-profileAddButton.addEventListener('click', function (){
-    showPopup(popupNewCard);
+data.profileAddButton.addEventListener('click', function (){
+    utils.showPopup(data.popupNewCard);
 });
 
-submitFormProfile.addEventListener('submit', saveFormProfile);
+data.submitFormProfile.addEventListener('submit', utils.saveFormProfile);
 
-submitFormCard.addEventListener('submit', saveFormCard);
+data.submitFormCard.addEventListener('submit', utils.saveFormCard);
 
-buttonCloseProfile.addEventListener('click', function (){
-    closePopup(popupEdit);
+data.buttonCloseProfile.addEventListener('click', function (){
+    utils.closePopup(data.popupEdit);
 })
 
-buttonCloseCard.addEventListener('click', function (){
-    closePopup(popupNewCard);
+data.buttonCloseCard.addEventListener('click', function (){
+    utils.closePopup(data.popupNewCard);
 })
 
-buttonCloseImg.addEventListener('click', function (){
-    closePopup(popupImage);
+data.buttonCloseImg.addEventListener('click', function (){
+    utils.closePopup(data.popupImage);
 })
+
+const renderElements = () => {
+    data.gallery.innerHTML = '';
+    data.initialCards.forEach((item) => {
+        const card = new Card(item, '.template__card');
+        const cardElement = card.cardGenerate();
+        data.gallery.append(cardElement);
+    });
+};
+
+renderElements();
+
+const rest = {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__button',
+    inactiveButtonClass: 'popup__button_disabled',
+    inputErrorClass: 'popup__input-error',
+    errorMessageClass: 'popup__error-message',
+    errorClass: 'popup__error_visible'
+};
+
+const formProfileValidator = new FormValidator(rest, data.submitFormProfile);
+formProfileValidator.enableValidation();
+
+const formCardValidator = new FormValidator(rest, data.submitFormCard);
+formCardValidator.enableValidation();
