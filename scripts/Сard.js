@@ -1,5 +1,7 @@
 import {popupImage} from "./constants.js";
 import {showPopup} from "./utils.js";
+const popupImg = popupImage.querySelector('.popup__gallery-img');
+const popupTitle = popupImage.querySelector('.popup__title-img');
 
 export class Card {
 
@@ -23,9 +25,6 @@ export class Card {
     }
 
     _handlePreviewPicture(){
-        const popupImg = popupImage.querySelector('.popup__gallery-img');
-        const popupTitle = popupImage.querySelector('.popup__title-img');
-
         popupImg.src = this._image;
         popupImg.alt = this._title;
         popupTitle.textContent = this._title;

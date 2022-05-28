@@ -2,6 +2,27 @@ import * as data from "./constants.js";
 import {Card} from "./Сard.js";
 import * as utils from "./utils.js";
 import {FormValidator} from "./FormValidator.js";
+import {closePopup} from "./utils.js";
+
+function createCard(item){
+    const card = new Card(item, '.template__card');
+    const cardElement = card.cardGenerate();
+    return cardElement;
+}
+
+function saveFormProfile(evt){
+    evt.preventDefault();
+    data.title.textContent = data.inputName.value;
+    data.major.textContent = data.inputMajor.value;
+    closePopup(evt.currentTarget);
+}
+
+function saveFormCard(evt){
+    evt.preventDefault();
+    data.gallery.prepend(createCard({title: data.inputTitle.value, link: data.inputImg.value}));
+    data.submitFormCard.reset();
+    closePopup(evt.currentTarget);
+}
 
 data.profileEditButton.addEventListener('click', function (){
     data.popupTitle.value = data.title.textContent;
@@ -13,17 +34,9 @@ data.profileAddButton.addEventListener('click', function (){
     utils.showPopup(data.popupNewCard);
 });
 
-data.submitFormProfile.addEventListener('submit', utils.saveFormProfile);
+data.submitFormProfile.addEventListener('submit', saveFormProfile);
 
-data.submitFormCard.addEventListener('submit', utils.saveFormCard);
-
-data.buttonCloseProfile.addEventListener('click', function (){
-    utils.closePopup(data.popupEdit);
-})
-
-data.buttonCloseCard.addEventListener('click', function (){
-    utils.closePopup(data.popupNewCard);
-})
+data.submitFormCard.addEventListener('submit', saveFormCard);
 
 data.buttonCloseImg.addEventListener('click', function (){
     utils.closePopup(data.popupImage);
@@ -32,8 +45,7 @@ data.buttonCloseImg.addEventListener('click', function (){
 const renderElements = () => {
     data.gallery.innerHTML = '';
     data.initialCards.forEach((item) => {
-        const card = new Card(item, '.template__card');
-        const cardElement = card.cardGenerate();
+        const cardElement = createCard(item);
         data.gallery.append(cardElement);
     });
 };
