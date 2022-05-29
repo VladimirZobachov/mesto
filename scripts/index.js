@@ -14,14 +14,14 @@ function saveFormProfile(evt){
     evt.preventDefault();
     data.title.textContent = data.inputName.value;
     data.major.textContent = data.inputMajor.value;
-    closePopup(evt.currentTarget);
+    closePopup(data.popupEdit);
 }
 
 function saveFormCard(evt){
     evt.preventDefault();
-    data.gallery.prepend(createCard({title: data.inputTitle.value, link: data.inputImg.value}));
+    data.gallery.prepend(createCard({name: data.inputTitle.value, link: data.inputImg.value}));
     data.submitFormCard.reset();
-    closePopup(evt.currentTarget);
+    closePopup(data.popupNewCard);
 }
 
 data.profileEditButton.addEventListener('click', function (){

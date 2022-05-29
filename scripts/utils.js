@@ -1,6 +1,3 @@
-import * as data from "./constants.js";
-import {Card} from "./Сard.js";
-
 export const handleEscUp = (evt) => {
     if (evt.key === "Escape") {
         const activePopup = document.querySelector('.popup_opened');
