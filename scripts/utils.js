@@ -10,9 +10,7 @@ export const handleEscUp = (evt) => {
 
 export const closePopupOut = (evt) => {
     if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close-button')) {
-        const activePopup = document.querySelector('.popup_opened');
         closePopup(evt.currentTarget);
-
     }
 }
 

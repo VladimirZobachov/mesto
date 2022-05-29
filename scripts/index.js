@@ -38,10 +38,6 @@ data.submitFormProfile.addEventListener('submit', saveFormProfile);
 
 data.submitFormCard.addEventListener('submit', saveFormCard);
 
-data.buttonCloseImg.addEventListener('click', function (){
-    utils.closePopup(data.popupImage);
-})
-
 const renderElements = () => {
     data.gallery.innerHTML = '';
     data.initialCards.forEach((item) => {
