@@ -20,6 +20,7 @@ function saveFormProfile(evt){
 function saveFormCard(evt){
     evt.preventDefault();
     data.gallery.prepend(createCard({name: data.inputTitle.value, link: data.inputImg.value}));
+    formCardValidator._toggleButtonState();
     closePopup(data.popupNewCard);
 }
 
