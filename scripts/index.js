@@ -21,7 +21,7 @@ function saveFormCard(evt){
     evt.preventDefault();
     data.gallery.prepend(createCard({name: data.inputTitle.value, link: data.inputImg.value}));
     data.submitFormCard.reset();
-    formCardValidator.enableValidation();
+    formCardValidator.toggleButtonState();
     closePopup(data.popupNewCard);
 }
 
