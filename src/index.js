@@ -1,17 +1,19 @@
 import * as data from "./constants.js";
-import {Card} from "./Сard.js";
-import {FormValidator} from "./FormValidator.js";
-import PopupWithImage from "./PopupWithImage.js";
-import PopupWithForm from "./PopupWithForm.js";
-import Section from "./Section.js";
-import UserInfo from "./UserInfo.js";
+import Card from "./components/Сard.js";
+import {FormValidator} from "./components/FormValidator.js";
+import PopupWithImage from "./components/PopupWithImage.js";
+import PopupWithForm from "./components/PopupWithForm.js";
+import Section from "./components/Section.js";
+import UserInfo from "./components/UserInfo.js";
+import '../pages/index.css';
 
 const formCard = (item)=>{
     const popup = new PopupWithForm('.popup_type_new-card', (item)=>{
         cardList.addItem({name:item.title, link:item.img});
-        });
+    });
     popup.open();
     popup.setEventListeners();
+    //data.profileAddButton.removeEventListener('click', formCard);
 }
 
 const formProfile = (item)=>{
@@ -23,6 +25,7 @@ const formProfile = (item)=>{
     });
     popup.open();
     popup.setEventListeners();
+    //data.profileEditButton.removeEventListener('click', formProfile);
 }
 
 data.profileAddButton.addEventListener('click', formCard);

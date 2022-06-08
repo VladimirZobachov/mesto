@@ -21,6 +21,4 @@ export default class PopupWithImage extends Popup{
     setEventListeners() {
         super.setEventListeners();
     }
-
-
 }

@@ -1,8 +1,4 @@
-import {popupImage} from "./constants.js";
-const popupImg = popupImage.querySelector('.popup__gallery-img');
-const popupTitle = popupImage.querySelector('.popup__title-img');
-
-export class Card {
+export default class Card {
 
     constructor({data, handleCardClick}, cardSelector){
         this._title = data.name;
