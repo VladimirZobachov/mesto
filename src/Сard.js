@@ -1,14 +1,15 @@
 import {popupImage} from "./constants.js";
-import {showPopup} from "./utils.js";
 const popupImg = popupImage.querySelector('.popup__gallery-img');
 const popupTitle = popupImage.querySelector('.popup__title-img');
 
 export class Card {
 
-    constructor(data, cardSelector){
+    constructor({data, handleCardClick}, cardSelector){
         this._title = data.name;
         this._image = data.link;
+        this._data = data;
         this._cardSelector = cardSelector;
+        this._handleCardClick = handleCardClick;
     }
 
     _getTemplate(){
@@ -24,13 +25,6 @@ export class Card {
         return getElementTemplate;
     }
 
-    _handlePreviewPicture(){
-        popupImg.src = this._image;
-        popupImg.alt = this._title;
-        popupTitle.textContent = this._title;
-
-        showPopup(popupImage);
-    }
 
     _setEventListeners(){
         const like = this._element.querySelector('.gallery__like');
@@ -38,7 +32,7 @@ export class Card {
         const delButton = this._element.querySelector('.gallery__del-button');
 
         img.addEventListener('click', ()=>{
-            this._handlePreviewPicture();
+            this._handleCardClick(this._data);
         });
         delButton.addEventListener('click', ()=>{
             delButton.closest('.gallery__item').remove();
