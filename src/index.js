@@ -13,7 +13,6 @@ const formCard = (item)=>{
     });
     popup.open();
     popup.setEventListeners();
-    //data.profileAddButton.removeEventListener('click', formCard);
 }
 
 const formProfile = (item)=>{
@@ -25,7 +24,6 @@ const formProfile = (item)=>{
     });
     popup.open();
     popup.setEventListeners();
-    //data.profileEditButton.removeEventListener('click', formProfile);
 }
 
 data.profileAddButton.addEventListener('click', formCard);
