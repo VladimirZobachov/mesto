@@ -15,9 +15,9 @@ module.exports = {
     devtool: "eval-source-map",
     mode: 'development',
     devServer: {
-        contentBase: path.resolve(__dirname, './dist'),
+        static: path.resolve(__dirname, './dist'),
         compress: true,
-        port: 8080,
+        port: 8081,
         open: true
     },
     module: {
@@ -32,8 +32,18 @@ module.exports = {
                 use: [MiniCssExtractPlugin.loader, {
                     loader: 'css-loader'
                 }]
-            }
-
+            },
+            {
+                test: /\.js$/,
+                use: 'babel-loader',
+                exclude: '/node_modules/'
+            },
+            // добавили правило для обработки файлов
+            {
+                // регулярное выражение, которое ищет все файлы с такими расширениями
+                test: /\.(png|svg|jpg|gif|woff(2)?|eot|ttf|otf)$/,
+                type: 'asset/resource'
+            },
         ]
     },
     plugins: [
