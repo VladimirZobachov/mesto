@@ -1,34 +1,34 @@
-const Arhis = 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg';
-const ChelArea = 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg';
-const Ivanovo = 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg';
-const Kamchatka = 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg';
-const HolmArea = 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg';
-const Baikal = 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg';
+const arhis = 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg';
+const chelArea = 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg';
+const ivanovo = 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg';
+const kamchatka = 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg';
+const holmArea = 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg';
+const baikal = 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg';
 
 export const initialCards = [
     {
         name: 'Архыз',
-        link: Arhis
+        link: arhis
     },
     {
         name: 'Челябинская область',
-        link: ChelArea
+        link: chelArea
     },
     {
         name: 'Иваново',
-        link: Ivanovo
+        link: ivanovo
     },
     {
         name: 'Камчатка',
-        link: Kamchatka
+        link: kamchatka
     },
     {
         name: 'Холмогорский район',
-        link: HolmArea
+        link: holmArea
     },
     {
         name: 'Байкал',
-        link: Baikal
+        link: baikal
     }
 ];
 
