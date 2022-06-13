@@ -12,6 +12,7 @@ const formCard = (item)=>{
         cardList.addItem({name:item.title, link:item.img});
     });
     popup.open();
+    formProfileValidator.enableValidation();
     popup.setEventListeners();
 }
 
@@ -22,6 +23,9 @@ const formProfile = (item)=>{
         data.major.textContent = userInfo.getUserInfo().major;
         userInfo.setUserInfo(item.name, item.major);
     });
+    data.popupTitleProfile.value = data.title.textContent;
+    data.popupMajorProfile.value = data.major.textContent;
+    formProfileValidator.enableValidation();
     popup.open();
     popup.setEventListeners();
 }

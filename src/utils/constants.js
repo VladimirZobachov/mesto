@@ -38,3 +38,6 @@ export const profileEditButton = document.querySelector('.profile__edit-button')
 export const profileAddButton = document.querySelector('.profile__add-button');
 export const submitFormProfile = document.querySelector('.popup__form-profile');
 export const submitFormCard = document.querySelector('.popup__form-card');
+export const popupTitleProfile = document.querySelector('.popup__input_type_name');
+export const popupMajorProfile = document.querySelector('.popup__input_type_major');
+
