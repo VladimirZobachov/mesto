@@ -22,7 +22,8 @@ const formProfileValidator = new FormValidator(rest, data.submitFormProfile);
 const formCardValidator = new FormValidator(rest, data.submitFormCard);
 
 const popupCard = new PopupWithForm('.popup_type_new-card', (item)=>{
-    cardList.addItem({name:item.title, link:item.img});
+    const element = new createCard({name:item.title, link:item.img});
+    cardList.addItem(element);
 });
 
 const popupProfile = new PopupWithForm('.popup_type_edit', (item)=>{
