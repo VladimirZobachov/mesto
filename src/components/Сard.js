@@ -41,6 +41,7 @@ export default class Card {
     cardGenerate(){
         this._element = this._getTemplate();
         this._setEventListeners();
+        console.log(this._element);
         return this._element;
     }
 
