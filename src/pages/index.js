@@ -21,13 +21,17 @@ const rest = {
 const formProfileValidator = new FormValidator(rest, data.submitFormProfile);
 const formCardValidator = new FormValidator(rest, data.submitFormCard);
 
+formProfileValidator.enableValidation();
+formCardValidator.enableValidation();
+
+const userInfo = new UserInfo({nameSelector:'.profile__title', majorSelector:'.profile__subtitle'});
+
 const popupCard = new PopupWithForm('.popup_type_new-card', (item)=>{
-    const element = new createCard({name:item.title, link:item.img});
-    cardList.addItem(element);
+    createCard({name:item.title, link:item.img});
 });
 
 const popupProfile = new PopupWithForm('.popup_type_edit', (item)=>{
-    const userInfo = new UserInfo({nameSelector:'.popup__input_type_name', majorSelector:'.popup__input_type_major'});
+    userInfo.setUserInfo(item.name, item.major);
     data.title.textContent = userInfo.getUserInfo().name;
     data.major.textContent = userInfo.getUserInfo().major;
     userInfo.setUserInfo(item.name, item.major);
@@ -41,15 +45,13 @@ popupImage.setEventListeners();
 
 const formCard = ()=>{
     formCardValidator.resetError();
-    formCardValidator.enableValidation();
     popupCard.open();
 }
 
 const formProfile = ()=>{
-    data.popupTitleProfile.value = data.title.textContent;
-    data.popupMajorProfile.value = data.major.textContent;
+    data.popupTitleProfile.value = userInfo.getUserInfo().name;
+    data.popupMajorProfile.value = userInfo.getUserInfo().major;
     formProfileValidator.resetError();
-    formProfileValidator.enableValidation();
     popupProfile.open();
 }
 
@@ -63,13 +65,15 @@ data.profileEditButton.addEventListener('click', formProfile);
 function createCard(item){
     const card = new Card({data:item, handleCardClick:cardImage}, '.template__card');
     const cardElement = card.cardGenerate();
-    return cardElement;
+    cardList.addItem(cardElement);
 }
 
 const cardList = new Section({
         items: data.initialCards,
-        renderer: createCard},
+        renderer: (item)=>{
+            createCard(item);
+        }},
     '.gallery__list');
 
-cardList.addItem(cardList.renderItems());
+cardList.renderItems();
 
