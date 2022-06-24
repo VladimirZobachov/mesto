@@ -9,12 +9,12 @@ export default class Api{
                 authorization: '661151b8-675b-4416-83fc-3d0035514aa7'
             }
         })
-        .then(res => {
-            if (res.ok) {
-                return res.json();
-            }
-            return Promise.reject(`Ошибка: ${res.status}`);
-        });
+            .then(res => {
+                if (res.ok) {
+                    return res.json();
+                }
+                return Promise.reject(`Ошибка: ${res.status}`);
+            });
     }
 
     setUser(name, major){
@@ -37,12 +37,12 @@ export default class Api{
                 authorization: '661151b8-675b-4416-83fc-3d0035514aa7'
             }
         })
-        .then(res => {
-            if (res.ok) {
-                return res.json();
-            }
-            return Promise.reject(`Ошибка: ${res.status}`);
-        });
+            .then(res => {
+                if (res.ok) {
+                    return res.json();
+                }
+                return Promise.reject(`Ошибка: ${res.status}`);
+            });
     }
 
     addCard(name, link) {

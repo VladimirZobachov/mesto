@@ -7,6 +7,7 @@ import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import Api from "../components/Api.js"
 import './index.css';
+import PopupWithSubmit from "../components/PopupWithSubmit";
 
 const api = new Api({
     baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-43',
@@ -43,6 +44,10 @@ api.getUser().then((result)=>{
 const popupCard = new PopupWithForm('.popup_type_new-card', (item)=>{
     createCard({name:item.title, link:item.img});
 });
+
+const popupDelCard = new PopupWithSubmit('.popup_type_del-card', (item)=>{
+    api.delCard(item).then();
+})
 
 const popupProfile = new PopupWithForm('.popup_type_edit', (item)=>{
     userInfo.setUserInfo(item.name, item.major);
@@ -85,7 +90,7 @@ function createCard(item){
             api.addLike(id).then();
         },
         handleDeleteIconClick: (id)=>{
-            api.delCard(id).then();
+            popupDelCard(id);
         }
 
     }, '.template__card');
