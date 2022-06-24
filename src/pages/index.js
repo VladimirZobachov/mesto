@@ -90,7 +90,8 @@ function createCard(item){
             api.addLike(id).then();
         },
         handleDeleteIconClick: (id)=>{
-            popupDelCard(id);
+            popupDelCard.open();
+            popupDelCard.setHandleSubmit(id)
         }
 
     }, '.template__card');

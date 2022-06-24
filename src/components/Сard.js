@@ -42,7 +42,6 @@ export default class Card {
             this._handleCardClick(this._data);
         });
         delButton.addEventListener('click', ()=>{
-            delButton.closest('.gallery__item').remove();
             this._handleDeleteIconClick(this._data.id);
         });
         like.addEventListener('click', ()=>{
