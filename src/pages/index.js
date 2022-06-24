@@ -119,13 +119,6 @@ function createCard(item){
     }, '.template__card');
     const cardElement = card.cardGenerate();
     cardList.addItem(cardElement);
-    api.addCard(item.name, item.link)
-        .then((result) => {
-            console.log(result);
-        })
-        .catch((err) => {
-            console.log(err); // выведем ошибку в консоль
-        });
 }
 
 const cardList = new Section(
