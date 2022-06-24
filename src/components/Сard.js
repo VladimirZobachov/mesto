@@ -42,7 +42,7 @@ export default class Card {
             this._handleCardClick(this._data);
         });
         delButton.addEventListener('click', ()=>{
-            this._handleDeleteIconClick(this._data.id);
+            this._handleDeleteIconClick(this._data._id);
         });
         like.addEventListener('click', ()=>{
             like.classList.toggle('gallery__like_type_is-active');

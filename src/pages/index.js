@@ -134,12 +134,12 @@ const cardList = new Section(
         },
     '.gallery__list');
 
-api.getInitialCards().then((result)=>{
-    cardList.renderItems(result);
-});
-
-
-
-
+api.getInitialCards()
+    .then((result)=>{
+        cardList.renderItems(result);
+    })
+    .catch((err)=>{
+        console.log(err);
+    });
 
 
