@@ -1,11 +1,20 @@
 export default class Card {
 
-    constructor({data, handleCardClick}, cardSelector){
+    constructor({
+                    data,
+                    handleCardClick,
+                    handleLikeClick,
+                    handleDeleteIconClick
+
+                }, cardSelector){
         this._title = data.name;
         this._image = data.link;
+        this._likes = data.likes.length;
         this._data = data;
         this._cardSelector = cardSelector;
         this._handleCardClick = handleCardClick;
+        this._handleLikeClick = handleLikeClick;
+        this._handleDeleteIconClick = handleDeleteIconClick;
     }
 
     _getTemplate(){
@@ -13,10 +22,12 @@ export default class Card {
         const getElementTemplate = templateCard.content.cloneNode(true);
         const titleEl = getElementTemplate.querySelector(".gallery__item-title");
         const imgEl = getElementTemplate.querySelector(".gallery__img");
+        const likes = getElementTemplate.querySelector(".gallery__like-count");
 
         titleEl.textContent = this._title;
         imgEl.src = this._image;
         imgEl.alt = this._title;
+        likes.textContent = this._likes;
 
         return getElementTemplate;
     }
@@ -32,9 +43,12 @@ export default class Card {
         });
         delButton.addEventListener('click', ()=>{
             delButton.closest('.gallery__item').remove();
+            this._handleDeleteIconClick(this._data.id);
         });
         like.addEventListener('click', ()=>{
             like.classList.toggle('gallery__like_type_is-active');
+            console.log(this._data._id);
+            this._handleLikeClick(this._data._id);
         });
     }
 

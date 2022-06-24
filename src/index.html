@@ -16,10 +16,10 @@
             <img src="<%=require('./images/image.png')%>" class="profile__avatar" alt="аватарка">
                 <div class="profile__content">
                     <div class="profile__name">
-                        <h1 class="profile__title">Жак-Ив Кусто</h1>
+                        <h1 class="profile__title"></h1>
                         <button aria-label="Edit" type="button" class="profile__edit-button"></button>
                     </div>
-                    <p class="profile__subtitle">Исследователь океана</p>
+                    <p class="profile__subtitle"></p>
                 </div>
             <button aria-label="Add" type="button" class="profile__add-button"></button>
         </section>
@@ -69,7 +69,10 @@
             <img class="gallery__img" alt="">
             <div class="gallery__item-info">
                 <h2 class="gallery__item-title"></h2>
-                <button aria-label="Like" type="button" class="gallery__like"></button>
+                <div class="gallery__likes">
+                    <button aria-label="Like" type="button" class="gallery__like"></button>
+                    <span class="gallery__like-count">1</span>
+                </div>
             </div>
         </li>
     </template>
