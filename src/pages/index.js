@@ -87,6 +87,7 @@ function createCard(item){
         handleDeleteIconClick: (id)=>{
             api.delCard(id).then();
         }
+
     }, '.template__card');
     const cardElement = card.cardGenerate();
     cardList.addItem(cardElement);
