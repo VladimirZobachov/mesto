@@ -39,6 +39,9 @@ api.getUser().then((result)=>{
     data.title.textContent = result.name;
     data.major.textContent = result.about;
     userInfo.setUserInfo(result.name, result.about);
+})
+    .catch((err) => {
+    console.log(err);
 });
 
 const popupCard = new PopupWithForm('.popup_type_new-card', (item)=>{
@@ -46,7 +49,13 @@ const popupCard = new PopupWithForm('.popup_type_new-card', (item)=>{
 });
 
 const popupDelCard = new PopupWithSubmit('.popup_type_del-card', (item)=>{
-    api.delCard(item).then();
+    api.delCard(item)
+        .then((result) => {
+            console.log(result);
+        })
+        .catch((err) => {
+            console.log(err); // выведем ошибку в консоль
+        });
 })
 
 const popupProfile = new PopupWithForm('.popup_type_edit', (item)=>{
@@ -54,7 +63,13 @@ const popupProfile = new PopupWithForm('.popup_type_edit', (item)=>{
     data.title.textContent = userInfo.getUserInfo().name;
     data.major.textContent = userInfo.getUserInfo().major;
     userInfo.setUserInfo(item.name, item.major);
-    api.setUser(item.name, item.major).then();
+    api.setUser(item.name, item.major)
+        .then((result) => {
+            console.log(result);
+        })
+        .catch((err) => {
+            console.log(err); // выведем ошибку в консоль
+        });
 });
 
 const popupImage = new PopupWithImage('.popup_type_image');
@@ -62,6 +77,7 @@ const popupImage = new PopupWithImage('.popup_type_image');
 popupCard.setEventListeners();
 popupProfile.setEventListeners();
 popupImage.setEventListeners();
+popupDelCard.setEventListeners();
 
 const formCard = ()=>{
     formCardValidator.resetError();
@@ -87,7 +103,13 @@ function createCard(item){
         data:item,
         handleCardClick: cardImage,
         handleLikeClick: (id)=>{
-            api.addLike(id).then();
+            api.addLike(id)
+                .then((result) => {
+                    console.log(result);
+                })
+                .catch((err) => {
+                    console.log(err); // выведем ошибку в консоль
+                });
         },
         handleDeleteIconClick: (id)=>{
             popupDelCard.open();
@@ -97,7 +119,13 @@ function createCard(item){
     }, '.template__card');
     const cardElement = card.cardGenerate();
     cardList.addItem(cardElement);
-    api.addCard(item.name, item.link).then();
+    api.addCard(item.name, item.link)
+        .then((result) => {
+            console.log(result);
+        })
+        .catch((err) => {
+            console.log(err); // выведем ошибку в консоль
+        });
 }
 
 const cardList = new Section(
