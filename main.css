@@ -428,10 +428,33 @@ template {
         margin-bottom: 36px;
     }
 }
+.profile__avatar-edit{
+    opacity: 0;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+}
+.profile__avatar-edit:hover{
+    opacity: 0.5;
+    cursor: pointer;
+}
+.profile__avatar-edit-icon{
+    position: absolute;
+    top:40%;
+    left: 40%;
+    width: 26px;
+    height: 26px;
+    background-image: url(ae1a976ddb506239e9f0.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
 .profile__avatar{
-    display: grid;
-    grid-area: avatar;
-    width: 120px;
+    width: 182px;
+    height: 120px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     border-radius: 50%;
 }
 .profile__title{
@@ -612,6 +635,11 @@ template {
     align-self: center;
     object-fit: cover;
 }
+.gallery__likes{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 .gallery__like{
     display: flex;
     align-self: center;
@@ -637,6 +665,7 @@ template {
 }
 .gallery__del-button{
     position: absolute;
+    display: none;
     width: 16px;
     height: 18px;
     margin: 10px 0 0 250px;
@@ -647,6 +676,17 @@ template {
 }
 .gallery__del-button:hover{
     opacity: 0.8;
+}
+.gallery__del-button-active{
+    display: flex;
+}
+.gallery__like-count{
+    display: flex;
+    align-self: center;
+    padding-top: 3px;
+    font-family: "Inter", "Arial", sans-serif;
+    font-weight: 400;
+    font-size: 13px;
 }
 .gallery__popup-img{
     max-height: 700px;
@@ -717,6 +757,38 @@ template {
 }
 
 
+.popup__content-avatar{
+    position: relative;
+    max-width: 430px;
+    min-width: 430px;
+    min-height: 230px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 36px;
+    box-sizing: border-box;
+}
+@media all and (max-width: 521px){
+    .popup__content-profile{
+        min-width: 282px;
+        padding: 23px;
+    }
+}
+.popup__content-del-card{
+    position: relative;
+    max-width: 430px;
+    min-width: 430px;
+    min-height: 181px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 36px;
+    box-sizing: border-box;
+}
+@media all and (max-width: 521px){
+    .popup__content-del-card{
+        min-width: 282px;
+        padding: 23px;
+    }
+}
 .popup__content-img{
     position: relative;
     margin-top: 5%;
@@ -749,6 +821,19 @@ template {
     font-size: 24px;
     font-weight: 900;
     line-height: 29px;
+    margin: 0;
+}
+@media all and (max-width: 521px){
+    .popup__header{
+        font-size: 18px;
+    }
+}
+.popup__header-avatar{
+    font-family: "Inter", "Arial ", sans-serif;
+    font-size: 24px;
+    font-weight: 900;
+    line-height: 29px;
+    padding-bottom: 54px;
     margin: 0;
 }
 @media all and (max-width: 521px){
