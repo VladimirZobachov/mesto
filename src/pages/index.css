@@ -34,10 +34,12 @@
 @import url("../blocks/popup/popup.css");
 @import url("../blocks/popup/__gallery-img/popup__gallery-img.css");
 @import url("../blocks/popup/__content-profile/popup__content-profile.css");
+@import url("../blocks/popup/__content-avatar/popup__content-avatar.css");
 @import url("../blocks/popup/__content-del-card/popup__content-del-card.css");
 @import url("../blocks/popup/__content-img/popup__content-img.css");
 @import url("../blocks/popup/__content-card/popup__content-card.css");
 @import url("../blocks/popup/__header/popup__header.css");
+@import url("../blocks/popup/__header-avatar/popup__header-avatar.css");
 @import url("../blocks/popup/__input/popup__input.css");
 @import url("../blocks/popup/__input/_type/popup__input_type_name.css");
 @import url("../blocks/popup/__input/_type/popup__input_type_major.css");
