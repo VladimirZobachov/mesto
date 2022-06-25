@@ -1,6 +1,6 @@
 import Popup from "./Popup";
 
-export default class PopupWithSubmit extends Popup{
+export default class PopupWithConfirmation extends Popup{
 
     constructor(popupSelector, callbackSubmitForm) {
         super(popupSelector);

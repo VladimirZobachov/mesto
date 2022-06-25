@@ -4,8 +4,8 @@ export default class Card {
                     data,
                     handleCardClick,
                     handleLikeClick,
-                    handleDeleteIconClick
-
+                    handleDeleteIconClick,
+                    userId
                 }, cardSelector){
         this._title = data.name;
         this._image = data.link;
@@ -15,6 +15,7 @@ export default class Card {
         this._handleCardClick = handleCardClick;
         this._handleLikeClick = handleLikeClick;
         this._handleDeleteIconClick = handleDeleteIconClick;
+        this._userId = userId;
     }
 
     _getTemplate(){
@@ -30,7 +31,7 @@ export default class Card {
         imgEl.alt = this._title;
         likes.textContent = this._likes;
 
-        if (this._data.owner.name === "Вовчик"){
+        if (this._data.owner._id === this._userId){
             delButton.classList.add('gallery__del-button-active');
         }
 
