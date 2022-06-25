@@ -1,6 +1,9 @@
 .profile__avatar{
-    display: grid;
-    grid-area: avatar;
-    width: 120px;
+    width: 182px;
+    height: 120px;
+    background-image: url("../../../images/image.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     border-radius: 50%;
 }
