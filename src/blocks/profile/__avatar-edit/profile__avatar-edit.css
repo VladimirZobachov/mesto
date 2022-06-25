@@ -1,0 +1,7 @@
+.profile__avatar-edit{
+    opacity: 1;
+}
+.profile__avatar-edit:hover{
+    opacity: 0.5;
+    cursor: pointer;
+}

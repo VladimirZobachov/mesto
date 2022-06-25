@@ -45,7 +45,7 @@ api.getUser().then((result)=>{
 });
 
 const popupCard = new PopupWithForm('.popup_type_new-card', (item)=>{
-    createCard({name:item.title, link:item.img, likes: 0});
+    createCard({name:item.title, link:item.img, likes: 0, owner: {_id: "62b5fe0d42bb6b0452b27437"}});
     api.addCard(item.title, item.img).then();
 });
 

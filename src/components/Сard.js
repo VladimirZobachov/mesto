@@ -23,11 +23,16 @@ export default class Card {
         const titleEl = getElementTemplate.querySelector(".gallery__item-title");
         const imgEl = getElementTemplate.querySelector(".gallery__img");
         const likes = getElementTemplate.querySelector(".gallery__like-count");
+        const delButton = getElementTemplate.querySelector('.gallery__del-button');
 
         titleEl.textContent = this._title;
         imgEl.src = this._image;
         imgEl.alt = this._title;
         likes.textContent = this._likes;
+
+        if (this._data.owner.name === "Вовчик"){
+            delButton.classList.add('gallery__del-button-active');
+        }
 
         return getElementTemplate;
     }

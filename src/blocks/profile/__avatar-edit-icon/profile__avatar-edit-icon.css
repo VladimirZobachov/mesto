@@ -1,0 +1,10 @@
+.profile__avatar-edit-icon{
+    position: absolute;
+    top: 50%;
+    left: 23%;
+    width: 20px;
+    height: 20px;
+    background-image: url("../../../images/pensil-edit.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+}

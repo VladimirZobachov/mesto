@@ -1,5 +1,6 @@
 .gallery__del-button{
     position: absolute;
+    display: none;
     width: 16px;
     height: 18px;
     margin: 10px 0 0 250px;
