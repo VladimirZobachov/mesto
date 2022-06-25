@@ -26,7 +26,20 @@ export default class Api{
             },
             body: JSON.stringify({
                 name: name,
-                about: major
+                about: major,
+            })
+        });
+    }
+
+    setAvatar(avatar){
+        return fetch('https://mesto.nomoreparties.co/v1/cohort-43/users/me/avatar', {
+            method: 'PATCH',
+            headers: {
+                authorization: '661151b8-675b-4416-83fc-3d0035514aa7',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                avatar: avatar,
             })
         });
     }

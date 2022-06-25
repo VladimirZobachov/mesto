@@ -34,10 +34,13 @@ export const initialCards = [
 
 export const title = document.querySelector('.profile__title');
 export const major = document.querySelector('.profile__subtitle');
+export const avatar = getComputedStyle(document.querySelector('.profile__avatar')).backgroundImage.split("\"");
 export const profileEditButton = document.querySelector('.profile__edit-button');
+export const profileEditAvatar = document.querySelector('.profile__avatar-edit');
 export const profileAddButton = document.querySelector('.profile__add-button');
 export const submitFormProfile = document.querySelector('.popup__form-profile');
 export const submitFormCard = document.querySelector('.popup__form-card');
 export const popupTitleProfile = document.querySelector('.popup__input_type_name');
 export const popupMajorProfile = document.querySelector('.popup__input_type_major');
+export const popupAvatarProfile = document.querySelector('.popup__input_type_avatar');
 

@@ -73,12 +73,28 @@ const popupProfile = new PopupWithForm('.popup_type_edit', (item)=>{
         });
 });
 
+const popupAvatar = new PopupWithForm('.popup_type_edit-avatar', (item)=>{
+    userInfo.setUserInfo(item.name, item.major, item.avatar);
+    data.avatar.textContent = userInfo.getUserInfo().avatar;
+    userInfo.setUserInfo(item.name, item.major, item.avatar);
+    api.setAvatar(item.avatar)
+        .then((result) => {
+            console.log(result);
+        })
+        .catch((err) => {
+            console.log(err); // выведем ошибку в консоль
+        });
+});
+
+
+
 const popupImage = new PopupWithImage('.popup_type_image');
 
 popupCard.setEventListeners();
 popupProfile.setEventListeners();
 popupImage.setEventListeners();
 popupDelCard.setEventListeners();
+popupAvatar.setEventListeners();
 
 const formCard = ()=>{
     formCardValidator.resetError();
@@ -92,12 +108,20 @@ const formProfile = ()=>{
     popupProfile.open();
 }
 
+const formAvatar = ()=>{
+    data.popupAvatarProfile.value = userInfo.getUserInfo().avatar;
+    formProfileValidator.resetError();
+    popupAvatar.open();
+    console.log(data.avatar);
+}
+
 const cardImage = (item)=>{
     popupImage.open(item);
 };
 
 data.profileAddButton.addEventListener('click', formCard);
 data.profileEditButton.addEventListener('click', formProfile);
+data.profileEditAvatar.addEventListener('click', formAvatar);
 
 function createCard(item){
     const card = new Card({

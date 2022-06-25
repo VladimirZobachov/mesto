@@ -47,6 +47,17 @@
             </form>
         </div>
     </div>
+    <div class="popup popup_type_edit-avatar">
+        <div class="popup__content-profile">
+            <button aria-label="Close" type="button" class="popup__close-button popup__close-button_type_profile"></button>
+            <h2 class="popup__header">Обновить аватар</h2>
+            <form class="popup__form popup__form-profile" name="popup-form">
+                <input type="text" class="popup__input popup__input_type_avatar" placeholder="ссылка на аватар" name="avatar" id="avatar" required minlength="2" maxlength="200">
+                <span class="popup__error-message popup__error-message_avatar"></span>
+                <button aria-label="saveForm" type="submit" class="popup__button">Сохранить</button>
+            </form>
+        </div>
+    </div>
     <div class="popup popup_type_new-card">
         <div class="popup__content-card">
             <button aria-label="Close" type="button" class="popup__close-button  popup__close-button_type_card"></button>
