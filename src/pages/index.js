@@ -38,7 +38,8 @@ formCardValidator.enableValidation();
 api.getUser().then((result)=>{
     data.title.textContent = result.name;
     data.major.textContent = result.about;
-    userInfo.setUserInfo(result.name, result.about);
+    data.avatar.setAttribute("style", `background-image:url("${result.avatar}")`);
+    userInfo.setUserInfo(result.name, result.about, result.avatar);
 })
     .catch((err) => {
     console.log(err);
@@ -75,8 +76,6 @@ const popupProfile = new PopupWithForm('.popup_type_edit', (item)=>{
 
 const popupAvatar = new PopupWithForm('.popup_type_edit-avatar', (item)=>{
     userInfo.setUserInfo(item.name, item.major, item.avatar);
-    data.avatar.textContent = userInfo.getUserInfo().avatar;
-    userInfo.setUserInfo(item.name, item.major, item.avatar);
     api.setAvatar(item.avatar)
         .then((result) => {
             console.log(result);
@@ -112,7 +111,6 @@ const formAvatar = ()=>{
     data.popupAvatarProfile.value = userInfo.getUserInfo().avatar;
     formProfileValidator.resetError();
     popupAvatar.open();
-    console.log(data.avatar);
 }
 
 const cardImage = (item)=>{
