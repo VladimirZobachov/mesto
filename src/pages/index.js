@@ -126,8 +126,17 @@ function createCard(item){
     const card = new Card({
         data:item,
         handleCardClick: cardImage,
-        handleLikeClick: (id)=>{
+        handleAddLikeClick: (id)=>{
             api.addLike(id)
+                .then((result) => {
+                    console.log(result);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        },
+        handleDelLikeClick: (id)=>{
+            api.delLike(id)
                 .then((result) => {
                     console.log(result);
                 })

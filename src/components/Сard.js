@@ -3,7 +3,8 @@ export default class Card {
     constructor({
                     data,
                     handleCardClick,
-                    handleLikeClick,
+                    handleAddLikeClick,
+                    handleDelLikeClick,
                     handleDeleteIconClick,
                     userId
                 }, cardSelector){
@@ -11,9 +12,11 @@ export default class Card {
         this._image = data.link;
         this._likes = data.likes.length;
         this._data = data;
+        this._liked = false;
         this._cardSelector = cardSelector;
         this._handleCardClick = handleCardClick;
-        this._handleLikeClick = handleLikeClick;
+        this._handleAddLikeClick = handleAddLikeClick;
+        this._handleDelLikeClick = handleDelLikeClick;
         this._handleDeleteIconClick = handleDeleteIconClick;
         this._userId = userId;
     }
@@ -52,9 +55,20 @@ export default class Card {
         });
         like.addEventListener('click', ()=>{
             like.classList.toggle('gallery__like_type_is-active');
-            console.log(this._data._id);
-            this._handleLikeClick(this._data._id);
+            this.isLiked();
         });
+    }
+
+    isLiked(){
+        if(this._liked === false){
+            this._liked = true;
+            this._handleAddLikeClick(this._data._id);
+            this._likes = this._likes + 1;
+        }else{
+            this._liked = false;
+            this._handleDelLikeClick(this._data._id);
+            this._likes = this._likes - 1;
+        }
     }
 
     cardGenerate(){
