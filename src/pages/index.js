@@ -43,20 +43,33 @@ api.getUser()
         data.major.textContent = result.about;
         data.avatar.setAttribute("style", `background-image:url("${result.avatar}")`);
         userInfo.setUserInfo(result.name, result.about, result.avatar, result._id);
+
+        api.getInitialCards()
+            .then((result)=>{
+                cardList.renderItems(result);
+            })
+            .catch((err)=>{
+                console.log(err);
+            });
     })
     .catch((err) => {
     console.log(err);
 });
 
 const popupCard = new PopupWithForm('.popup_type_new-card', (item)=>{
-    createCard({name:item.title, link:item.img, likes: 0, owner: userInfo.getUserInfo().id});
-    api.addCard(item.title, item.img).then();
+    api.addCard(item.title, item.img)
+        .then((result) => {
+            createCard(result);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 });
 
 const popupDelCard = new PopupWithConfirmation('.popup_type_del-card', (item)=>{
-    api.delCard(item)
+    api.delCard(item.getId())
         .then((result) => {
-            console.log(result);
+            item.delCard();
         })
         .catch((err) => {
             console.log(err);
@@ -64,13 +77,12 @@ const popupDelCard = new PopupWithConfirmation('.popup_type_del-card', (item)=>{
 })
 
 const popupProfile = new PopupWithForm('.popup_type_edit', (item)=>{
-    userInfo.setUserInfo(item.name, item.major);
-    data.title.textContent = userInfo.getUserInfo().name;
-    data.major.textContent = userInfo.getUserInfo().major;
-    userInfo.setUserInfo(item.name, item.major);
     api.setUser(item.name, item.major)
         .then((result) => {
-            console.log(result);
+            userInfo.setUserInfo(item.name, item.major);
+            data.title.textContent = userInfo.getUserInfo().name;
+            data.major.textContent = userInfo.getUserInfo().major;
+            popupProfile.loading("Сохранено!");
         })
         .catch((err) => {
             console.log(err);
@@ -78,10 +90,9 @@ const popupProfile = new PopupWithForm('.popup_type_edit', (item)=>{
 });
 
 const popupAvatar = new PopupWithForm('.popup_type_edit-avatar', (item)=>{
-    userInfo.setUserInfo(item.name, item.major, item.avatar);
     api.setAvatar(item.avatar)
         .then((result) => {
-            console.log(result);
+            data.avatar.setAttribute("style", `background-image:url("${result.avatar}")`);
         })
         .catch((err) => {
             console.log(err);
@@ -144,9 +155,9 @@ function createCard(item){
                     console.log(err);
                 });
         },
-        handleDeleteIconClick: (id)=>{
+        handleDeleteIconClick: (card)=>{
             popupDelCard.open();
-            popupDelCard.setHandleSubmit(id)
+            popupDelCard.setHandleSubmit(card);
         },
         userId: userInfo.getUserInfo().id
     }, '.template__card');
@@ -160,12 +171,6 @@ const cardList = new Section(
         },
     '.gallery__list');
 
-api.getInitialCards()
-    .then((result)=>{
-        cardList.renderItems(result);
-    })
-    .catch((err)=>{
-        console.log(err);
-    });
+
 
 

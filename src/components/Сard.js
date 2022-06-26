@@ -8,6 +8,7 @@ export default class Card {
                     handleDeleteIconClick,
                     userId
                 }, cardSelector){
+        this._id = data._id;
         this._title = data.name;
         this._image = data.link;
         this._likes = data.likes.length;
@@ -21,6 +22,7 @@ export default class Card {
         this._templateCard = document.querySelector(this._cardSelector);
         this._getElementTemplate = this._templateCard.content.cloneNode(true);
         this._likesCount = this._getElementTemplate.querySelector(".gallery__like-count");
+        this._delButton = this._getElementTemplate.querySelector('.gallery__del-button');
 
 
         if(data.likes.length > 0){
@@ -34,7 +36,6 @@ export default class Card {
         }else{
             this._liked = false;
         }
-        console.log(this._liked);
     }
 
     _getTemplate(){
@@ -60,23 +61,29 @@ export default class Card {
         return this._getElementTemplate;
     }
 
-
     _setEventListeners(){
 
         const like = this._element.querySelector('.gallery__like');
         const img = this._element.querySelector('.gallery__img');
-        const delButton = this._element.querySelector('.gallery__del-button');
 
         img.addEventListener('click', ()=>{
             this._handleCardClick(this._data);
         });
-        delButton.addEventListener('click', ()=>{
-            this._handleDeleteIconClick(this._data._id);
+        this._delButton.addEventListener('click', ()=>{
+            this._handleDeleteIconClick(this);
         });
         like.addEventListener('click', ()=>{
             like.classList.toggle('gallery__like_type_is-active');
             this.isLiked();
         });
+    }
+
+    getId(){
+        return this._id;
+    }
+
+    delCard(){
+        this._delButton.closest('.gallery__item').remove();
     }
 
     isLiked(){
