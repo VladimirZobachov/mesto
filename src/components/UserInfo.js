@@ -1,8 +1,10 @@
+import * as data from "../utils/constants";
+
 export default class UserInfo{
-    constructor() {
-        this._name = "";
-        this._major = "";
-        this._avatar = "";
+    constructor(nameSelector, majorSelector, avatarSelector) {
+        this._name = document.querySelector(nameSelector);
+        this._major = document.querySelector(majorSelector);
+        this._avatar = document.querySelector(avatarSelector);
         this._id = "";
     }
 
@@ -10,10 +12,10 @@ export default class UserInfo{
         return {name: this._name, major: this._major, avatar: this._avatar, id: this._id};
     }
 
-    setUserInfo(name, major, avatar, id){
-        this._name = name;
-        this._major = major;
-        this._avatar = avatar;
-        this._id = id;
+    setUserInfo(data){
+        this._name.textContent = data.name;
+        this._major.textContent = data.about;
+        this._avatar.setAttribute("style", `background-image:url("${data.avatar}")`);
+        this._id = data._id;
     }
 }
