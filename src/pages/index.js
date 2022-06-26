@@ -60,6 +60,7 @@ const popupCard = new PopupWithForm('.popup_type_new-card', (item)=>{
     api.addCard(item.title, item.img)
         .then((result) => {
             createCard(result);
+            popupCard.close();
         })
         .catch((err) => {
             console.log(err);
@@ -84,6 +85,7 @@ const popupProfile = new PopupWithForm('.popup_type_edit', (item)=>{
             data.title.textContent = userInfo.getUserInfo().name;
             data.major.textContent = userInfo.getUserInfo().major;
             popupProfile.loading("Сохранено!");
+            popupProfile.close();
         })
         .catch((err) => {
             console.log(err);
@@ -94,6 +96,7 @@ const popupAvatar = new PopupWithForm('.popup_type_edit-avatar', (item)=>{
     api.setAvatar(item.avatar)
         .then((result) => {
             data.avatar.setAttribute("style", `background-image:url("${result.avatar}")`);
+            popupAvatar.close();
         })
         .catch((err) => {
             console.log(err);

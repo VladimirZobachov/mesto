@@ -20,13 +20,11 @@ export default class PopupWithForm extends Popup{
     close() {
         super.close();
         this._form.reset();
-        this._form.removeEventListener('submit', this._submitForm);
     }
 
     open() {
         this.loading("Сохранить")
         super.open();
-        this._form.addEventListener('submit', this._submitForm);
     }
 
     loading(textButton){
@@ -38,8 +36,6 @@ export default class PopupWithForm extends Popup{
         evt.preventDefault();
         this.loading("Сохранение...")
         this._callbackSubmitForm(this._getInputValues());
-        this.close();
-        this._form.reset();
     }
 
     setEventListeners() {
