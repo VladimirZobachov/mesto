@@ -120,7 +120,6 @@ const formProfile = ()=>{
 }
 
 const formAvatar = ()=>{
-    data.popupAvatarProfile.value = userInfo.getUserInfo().avatar;
     formProfileValidator.resetError();
     popupAvatar.open();
 }
