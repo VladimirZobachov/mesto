@@ -11,19 +11,14 @@ export default class PopupWithConfirmation extends Popup{
     _submitForm = (evt)=>{
         evt.preventDefault();
         this._callbackSubmitForm(this._id);
-        this.close();
-        this._form.reset();
     }
 
     close() {
         super.close();
-        this._form.reset();
-        this._form.removeEventListener('submit', this._submitForm);
     }
 
     open() {
         super.open();
-        this._form.addEventListener('submit', this._submitForm);
     }
 
     setHandleSubmit(id){

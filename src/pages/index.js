@@ -70,6 +70,7 @@ const popupDelCard = new PopupWithConfirmation('.popup_type_del-card', (item)=>{
     api.delCard(item.getId())
         .then((result) => {
             item.delCard();
+            popupDelCard.close();
         })
         .catch((err) => {
             console.log(err);
