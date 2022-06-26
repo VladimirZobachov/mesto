@@ -38,7 +38,7 @@ Promise.all([api.getUser(), api.getInitialCards()])
 const popupCard = new PopupWithForm('.popup_type_new-card', (item)=>{
     api.addCard(item.title, item.img)
         .then((result) => {
-            createCard(result);
+            cardList.addItem(createCard(result));
             popupCard.close();
         })
         .catch((err) => {
@@ -141,12 +141,12 @@ function createCard(item){
         userId: userInfo.getUserInfo().id
     }, '.template__card');
     const cardElement = card.cardGenerate();
-    cardList.addItem(cardElement);
+    return cardElement;
 }
 
 const cardList = new Section(
         (item)=>{
-            createCard(item);
+            cardList.addItem(createCard(item));
         },
     '.gallery__list');
 
